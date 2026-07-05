@@ -3,39 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PACKT — Hikayemiz</title>
+  <title>PACKT — Hikayemiz (Anasayfa Bölümü)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ============================================================
+       ALL STYLES SCOPED UNDER .p-storysec — ikas CSS isolation
+       ============================================================ */
 
-    html, body {
-      height: 100%;
-      background: #ededee;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      overflow: hidden;
+    .p-storysec *, .p-storysec *::before, .p-storysec *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    /* ══════════════════════════════════════
-       SECTION LAYOUT
-    ══════════════════════════════════════ */
-    .p-story {
+    .p-storysec {
+      --platinum:   #ededee;
+      --graphite:   #333132;
+      --terracotta: #f54f36;
+      --bone:       #d3d2c1;
+      --grey:       #777a7d;
+
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      color: var(--graphite);
+      background: var(--platinum);
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+
       display: flex;
       align-items: stretch;
-      height: 100vh;
-      background: #ededee;
+      min-height: 78vh;
     }
 
     /* ── Image Panel ── */
-    .p-story__visual {
+    .p-storysec__visual {
       flex: 0 0 58%;
       position: relative;
       overflow: hidden;
     }
 
-    .p-story__visual img {
+    .p-storysec__visual img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -44,7 +55,7 @@
     }
 
     /* Right-edge fade: image dissolves into background */
-    .p-story__visual::after {
+    .p-storysec__visual::after {
       content: '';
       position: absolute;
       inset: 0;
@@ -53,171 +64,211 @@
         transparent 55%,
         rgba(237, 237, 238, 0.45) 75%,
         rgba(237, 237, 238, 0.88) 92%,
-        #ededee 100%
+        var(--platinum) 100%
       );
       pointer-events: none;
     }
 
     /* ── Text Panel ── */
-    .p-story__content {
+    .p-storysec__content {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 4rem 4.5rem 4rem 1.5rem;
+      padding: 88px 64px 88px 24px;
     }
 
-    /* Accent rule */
-    .p-story__accent {
+    /* Eyebrow */
+    .p-storysec__eyebrow {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 1.75rem;
+      gap: 12px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey);
     }
 
-    .p-story__accent-line {
+    .p-storysec__eyebrow::before {
+      content: '';
       width: 28px;
       height: 1px;
-      background: #f54f36;
+      background: var(--terracotta);
       flex-shrink: 0;
     }
 
-    .p-story__label {
-      font-size: 0.72rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #f54f36;
-      font-weight: 500;
+    /* Title */
+    .p-storysec__title {
+      margin-top: 24px;
+      font-size: clamp(28px, 3.4vw, 46px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--graphite);
+      max-width: 420px;
+    }
+
+    .p-storysec__title em {
+      font-style: normal;
+      color: var(--terracotta);
     }
 
     /* Body text */
-    .p-story__text {
-      font-size: 1rem;
+    .p-storysec__text {
+      margin-top: 24px;
+      font-size: 15px;
       line-height: 1.85;
-      color: #3A3838;
-      font-weight: 300;
-      max-width: 310px;
+      color: var(--grey);
+      font-weight: 400;
+      max-width: 400px;
     }
 
-    /* CTA link */
-    .p-story__cta {
-      margin-top: 2.75rem;
+    /* CTA button — matches landing p-btn--outline */
+    .p-storysec__cta {
+      margin-top: 44px;
+      align-self: flex-start;
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-weight: 500;
-      color: #3A3838;
+      justify-content: center;
+      gap: 10px;
       text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      border: 1px solid var(--graphite);
+      color: var(--graphite);
+      background: transparent;
       cursor: pointer;
-      border: none;
-      background: none;
-      padding: 0;
-      transition: color 0.25s;
+      transition: all 0.25s ease;
+      font-family: inherit;
     }
 
-    .p-story__cta-label {
-      border-bottom: 1px solid #3A3838;
-      padding-bottom: 2px;
-      transition: border-color 0.25s;
-    }
-
-    .p-story__cta-arrow {
-      font-size: 1rem;
+    .p-storysec__cta-arrow {
+      font-size: 14px;
       line-height: 1;
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.25s;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .p-story__cta:hover {
-      color: #f54f36;
+    .p-storysec__cta:hover {
+      background: var(--graphite);
+      color: var(--platinum);
     }
 
-    .p-story__cta:hover .p-story__cta-label {
-      border-color: #f54f36;
+    .p-storysec__cta:hover .p-storysec__cta-arrow {
+      transform: translateX(5px);
     }
 
-    .p-story__cta:hover .p-story__cta-arrow {
-      transform: translateX(6px);
+    /* ===== SCROLL REVEAL ===== */
+    .p-storysec .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* ══════════════════════════════════════
+    .p-storysec .reveal--delay-1 { transition-delay: 0.1s; }
+    .p-storysec .reveal--delay-2 { transition-delay: 0.2s; }
+    .p-storysec .reveal--delay-3 { transition-delay: 0.3s; }
+
+    .p-storysec .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .p-storysec .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ============================================================
        RESPONSIVE
-    ══════════════════════════════════════ */
+    ============================================================ */
     @media (max-width: 860px) {
-      html, body { overflow: auto; }
-
-      .p-story {
+      .p-storysec {
         flex-direction: column;
-        height: auto;
-        min-height: 100vh;
+        min-height: 0;
       }
 
-      .p-story__visual {
+      .p-storysec__visual {
         flex: 0 0 auto;
-        height: 60vw;
+        height: 62vw;
         min-height: 240px;
       }
 
       /* Mobile: bottom fade instead of right fade */
-      .p-story__visual::after {
+      .p-storysec__visual::after {
         background: linear-gradient(
           to bottom,
           transparent 55%,
           rgba(237, 237, 238, 0.6) 80%,
-          #ededee 100%
+          var(--platinum) 100%
         );
       }
 
-      .p-story__content {
-        padding: 2.5rem 2rem 3rem;
+      .p-storysec__content {
+        padding: 8px 24px 64px;
       }
 
-      .p-story__text {
+      .p-storysec__title,
+      .p-storysec__text {
         max-width: 100%;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .p-story__content {
-        padding: 2rem 1.5rem 2.5rem;
-      }
-
-      .p-story__text {
-        font-size: 0.95rem;
       }
     }
   </style>
 </head>
-<body>
+<body style="margin:0; background:#ededee;">
 
-  <section class="p-story">
+  <!-- ikas'a taşırken: bu <section> bloğunu (style + script ile birlikte)
+       özel HTML alanına yapıştırın. Görseli ikas medya kütüphanesine yükleyip
+       src'yi CDN adresiyle değiştirin. CTA linki: /pages/hikayemiz -->
+  <section class="p-storysec">
 
-    <div class="p-story__visual">
+    <div class="p-storysec__visual">
       <img
         src="./IMG_6131.jpg"
         alt="Packt modüler çalışma ekosistemi — ahşap ve metal organizerlar"
+        loading="lazy"
       >
     </div>
 
-    <div class="p-story__content">
-      <div class="p-story__accent">
-        <div class="p-story__accent-line"></div>
-        <span class="p-story__label">Hikayemiz</span>
-      </div>
+    <div class="p-storysec__content">
+      <div class="p-storysec__eyebrow reveal">Hikayemiz</div>
 
-      <p class="p-story__text">
+      <h2 class="p-storysec__title reveal reveal--delay-1">
+        Ahşap ve metalin<br>yalın <em>uyumu.</em>
+      </h2>
+
+      <p class="p-storysec__text reveal reveal--delay-2">
         Ahşap ve metalin yalın uyumundan doğan Packt; estetiği ve ergonomiyi bir araya getiren modüler çözümler sunar. Karmaşadan uzak, sadece size ait ve sizinle şekillenen bir çalışma ekosistemi.
       </p>
 
-      <a class="p-story__cta" href="../packt-storypage/index.html">
-        <span class="p-story__cta-label">Hikayemizi Keşfedin</span>
-        <span class="p-story__cta-arrow">→</span>
+      <a class="p-storysec__cta reveal reveal--delay-3" href="/pages/hikayemiz">
+        <span>Hikayemizi Keşfedin</span>
+        <span class="p-storysec__cta-arrow">→</span>
       </a>
     </div>
 
   </section>
+
+  <script>
+    (function () {
+      'use strict';
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.p-storysec .reveal').forEach(function (el) {
+        io.observe(el);
+      });
+    })();
+  </script>
 
 </body>
 </html>
