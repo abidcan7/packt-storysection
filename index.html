@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
+<!-- iframe icinde linkler ana pencereyi yonlendirsin -->
+<base target="_top">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PACKT — Hikayemiz (Anasayfa Bölümü)</title>
@@ -36,7 +38,8 @@
 
       display: flex;
       align-items: stretch;
-      min-height: 78vh;
+      /* iframe içinde vh kullanma — sabit, kompakt yükseklik */
+      height: 480px;
     }
 
     /* ── Image Panel ── */
@@ -75,7 +78,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 88px 64px 88px 24px;
+      padding: 24px 56px 24px 24px;
     }
 
     /* Eyebrow */
@@ -100,8 +103,8 @@
 
     /* Title */
     .p-storysec__title {
-      margin-top: 24px;
-      font-size: clamp(28px, 3.4vw, 46px);
+      margin-top: 18px;
+      font-size: clamp(26px, 3vw, 40px);
       font-weight: 900;
       letter-spacing: -0.03em;
       line-height: 1.05;
@@ -116,7 +119,7 @@
 
     /* Body text */
     .p-storysec__text {
-      margin-top: 24px;
+      margin-top: 18px;
       font-size: 15px;
       line-height: 1.85;
       color: var(--grey);
@@ -124,9 +127,9 @@
       max-width: 400px;
     }
 
-    /* CTA button — matches landing p-btn--1outline */
+    /* CTA button — matches landing p-btn--outline */
     .p-storysec__cta {
-      margin-top: 44px;
+      margin-top: 32px;
       align-self: flex-start;
       display: inline-flex;
       align-items: center;
@@ -187,13 +190,14 @@
     @media (max-width: 860px) {
       .p-storysec {
         flex-direction: column;
-        min-height: 0;
+        height: auto;
       }
 
       .p-storysec__visual {
         flex: 0 0 auto;
-        height: 62vw;
-        min-height: 240px;
+        height: 56vw;
+        min-height: 200px;
+        max-height: 300px;
       }
 
       /* Mobile: bottom fade instead of right fade */
@@ -207,7 +211,7 @@
       }
 
       .p-storysec__content {
-        padding: 8px 24px 64px;
+        padding: 4px 24px 36px;
       }
 
       .p-storysec__title,
@@ -244,7 +248,7 @@
         Ahşap ve metalin yalın uyumundan doğan Packt; estetiği ve ergonomiyi bir araya getiren modüler çözümler sunar. Karmaşadan uzak, sadece size ait ve sizinle şekillenen bir çalışma ekosistemi.
       </p>
 
-      <a class="p-storysec__cta reveal reveal--delay-3" href="/pages/hikayemiz">
+      <a class="p-storysec__cta reveal reveal--delay-3" href="https://thepackt.co/pages/hikayemiz">
         <span>Hikayemizi Keşfedin</span>
         <span class="p-storysec__cta-arrow">→</span>
       </a>
